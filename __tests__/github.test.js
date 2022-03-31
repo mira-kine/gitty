@@ -2,6 +2,9 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const GithubUser = require('../lib/models/GithubUser');
+
+jest.mock('../lib/utils/github');
 
 describe('gitty routes', () => {
   beforeEach(() => {
@@ -19,20 +22,13 @@ describe('gitty routes', () => {
     );
   });
 
-  it.skip('logs user in and redirects to posts page', async () => {
+  it('logs user in and redirects to posts page', async () => {
     const req = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
       .redirects(1);
     // check that callback redirects you to posts
     // check for res.redirects, make sure it matches to what you want to redirect to
-    expect(req.body).toEqual({
-      id: expect.any(String),
-      username: 'fake_github_user',
-      email: 'not-real@example.com',
-      avatar: expect.any(String),
-      iat: expect.any(Number),
-      exp: expect.any(Number),
-    });
+    expect(req.redirects[0]).toEqual(expect.stringContaining('/api/v1/posts'));
   });
 });
