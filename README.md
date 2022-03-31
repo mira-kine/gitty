@@ -1,5 +1,9 @@
 # Plan for Gitty
 
+- [x] sql table for github_users
+- [x] set up app.js
+- [x] npm i needed packages
+
 ## Users can sign up using their Github account
 
 - [ ] GET /api/v1/github/login route (for redirecting to Github’s OAuth)
