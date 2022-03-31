@@ -6,7 +6,7 @@
 
 ## Users can sign up using their Github account
 
-- [ ] GET /api/v1/github/login route (for redirecting to Github’s OAuth)
+- [x] GET /api/v1/github/login route (for redirecting to Github’s OAuth)
 - i.e. if no GithubUser exists in your database for the user, create a new one
 
 ## Users can sign in using their Github account

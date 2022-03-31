@@ -19,16 +19,17 @@ describe('gitty routes', () => {
     );
   });
 
-  it('logs user in and redirects to dashboard', async () => {
+  it('logs user in and redirects to posts page', async () => {
     const req = await request
       .agent(app)
       .get('/api/v1/github/login/callback?code=42')
       .redirects(1);
-
+    // check that callback redirects you to posts
+    // check for res.redirects, make sure it matches to what you want to redirect to
     expect(req.body).toEqual({
       id: expect.any(String),
-      username: 'test_github_user',
-      email: 'test@e.com',
+      username: 'fake_github_user',
+      email: 'not-real@example.com',
       avatar: expect.any(String),
       iat: expect.any(Number),
       exp: expect.any(Number),
