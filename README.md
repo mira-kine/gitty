@@ -32,5 +32,5 @@
 
 ## Signs user out
 
-- [ ] DELETE /api/v1/github signs a user out (i.e. deletes the session cookie)
+- [x] DELETE /api/v1/github signs a user out (i.e. deletes the session cookie)
 - [x] gitHub utils -> exchangeCodeForToken , getGitHubProfile

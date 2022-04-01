@@ -39,10 +39,9 @@ describe('gitty routes', () => {
       email: 'not-real@example.com',
     });
 
-    const res = await request(app).delete('/api/v1/login/callback');
+    const res = await request(app).delete('/api/v1/github/sessions');
     expect(res.body).toEqual({
       message: 'Signed out successfully',
-      success: true,
     });
   });
 });
