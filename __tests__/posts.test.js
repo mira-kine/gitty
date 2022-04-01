@@ -36,22 +36,20 @@ describe('gitty routes', () => {
     expect(res.body).toEqual([post1, post2]);
   });
 
-  // it('user can create short 255 char post if signed in', async () => {
-  //   const agent = request.agent(app);
-  //   const loginReq = await request
-  //     .agent(app)
-  //     .get('/api/v1/github/login/callback?code=42')
-  //     .redirects(1);
-  //   // sign in gitHub user
-  //   // mocks give fake token
-  //   const callbackRes = await agent.get('/login/callback');
+  it('user can create short 255 char post if signed in', async () => {
+    const agent = request.agent(app);
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
+    // sign in gitHub user
+    // mocks give fake token
+    await agent.get('/login/callback');
 
-  //   const res = await agent.post('/api/v1/posts/create').send({
-  //     text: 'this is my test post',
-  //   });
-  //   expect(res.body).toEqual({
-  //     id: expect.any(String),
-  //     text: 'this is my test post',
-  //   });
-  // });
+    const res = await agent.post('/api/v1/posts/create').send({
+      text: 'this is my test post',
+    });
+
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      text: 'this is my test post',
+    });
+  });
 });
