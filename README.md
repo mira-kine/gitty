@@ -22,7 +22,7 @@
 
 ## Authenticated users can make short text posts (via API)
 
-- [ ] limit text posts to 255 characters (in sql)
+- [x] limit text posts to 255 characters (in sql)
 
 ## Authenticated users can make subsequent requests to the API without having to log in before each one
 
