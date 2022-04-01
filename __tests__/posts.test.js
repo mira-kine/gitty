@@ -16,12 +16,10 @@ describe('gitty routes', () => {
 
   it('user can get posts after redirect from oauth', async () => {
     const agent = request.agent(app);
-    await agent.get('/api/v1/github/login');
+    await request(app).get('/api/v1/github/login');
     // call back redirect, exchange access_token
-    await request
-      .agent(app)
-      .get('/api/v1/github/login/callback?code=42')
-      .redirects(1);
+    await agent.get('/api/v1/github/login/callback?code=42').redirects(1);
+
     // posts
     const post1 = {
       id: expect.any(String),
