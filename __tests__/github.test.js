@@ -31,4 +31,18 @@ describe('gitty routes', () => {
     // check for res.redirects, make sure it matches to what you want to redirect to
     expect(req.redirects[0]).toEqual(expect.stringContaining('/api/v1/posts'));
   });
+
+  it('signs out user through a delete route', async () => {
+    await GithubUser.insert({
+      username: 'fake_github_user',
+      avatar: 'https://www.placecage.com/gif/300/300',
+      email: 'not-real@example.com',
+    });
+
+    const res = await request(app).delete('/api/v1/login/callback');
+    expect(res.body).toEqual({
+      message: 'Signed out successfully',
+      success: true,
+    });
+  });
 });
