@@ -25,12 +25,12 @@ describe('gitty routes', () => {
     // posts
     const post1 = {
       id: expect.any(String),
-      text: 'this is my test post',
+      text: 'my first text post!',
     };
 
     const post2 = {
       id: expect.any(String),
-      text: 'this is my second test post',
+      text: 'my second text post!',
     };
 
     const res = await agent.get('/api/v1/posts');
