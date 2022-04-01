@@ -17,8 +17,8 @@
 ## Authenticated users can view a list of text posts (via API)
 
 - i.e. the /api/v1/posts route uses Express middleware for authentication
-- [ ] authentication middleware
-- [ ] GET '/api/v1/posts' -> lists posts for all users
+- [x] authentication middleware
+- [x] GET '/api/v1/posts' -> lists posts for all users
 
 ## Authenticated users can make short text posts (via API)
 
@@ -28,7 +28,7 @@
 
 - i.e. your authentication process uses cookies to store server-side state
 - [x] GithubUser model
-- [ ] Post model
+- [x] Post model
 
 ## Signs user out
 
